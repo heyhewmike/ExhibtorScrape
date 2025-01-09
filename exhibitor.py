@@ -25,10 +25,10 @@ year = time.strftime("%Y")
 page = 0 # creating page variable
 
 # Generating the logging & screenshot folder & file
-logging_fold = "nrf_"+str(timestamp)
+logging_fold = "exhibitor_"+str(timestamp)
 logFldr = os.path.join(logging_fold)
 os.makedirs(logFldr, exist_ok=True)
-logFilename = os.path.join(logFldr, "NRF_Results.log")
+logFilename = os.path.join(logFldr, "EXHIBITOR_Results.log")
 logging.basicConfig(filename=str(logFilename), level=logging.INFO)
 
 logging.info(f"Testing OS: {testingOS}")
@@ -45,8 +45,8 @@ driver = webdriver.Firefox(options=options)  # Use GeckoDriver
 driver.set_window_size(1920, 1080)
 wait = WebDriverWait(driver, 10) # Sets the length of time for the dynamic wait to max out at. Typically 10 is enough
 
-# URL of the NRF (nat retail fed) exhibitor directory
-start_url = "https://nrfbigshow2025.smallworldlabs.com/exhibitors"  # Update this to the new URL
+# URL of the exhibitor (nat retail fed) exhibitor directory
+start_url = "example.com"  # Update this to the new URL
 driver.get(start_url)
 logging.info("Browser launched")
 
@@ -201,7 +201,7 @@ driver.quit()
 
 # Save data to CSV and Excel
 df = pd.DataFrame(data) # Saves data to variable for writing to files
-df.to_csv(os.path.join(logFldr, f"NRF-exhibitors_{year}.csv"), index=False) # Writes to CSV File
-df.to_excel(os.path.join(logFldr, f"NRF-exhibitors_{year}.xlsx"), index=False) # Writes to XLSX
-logging.info(f"Data scraping completed and saved to NRF-exhibitors_{year}.csv and NRF-exhibitors_{year}.xlsx.")
-print(f"Data scraping completed and saved to NRF-exhibitors_{year}.csv and NRF-exhibitors_{year}.xlsx.")
+df.to_csv(os.path.join(logFldr, f"exhibitor-exhibitors_{year}.csv"), index=False) # Writes to CSV File
+df.to_excel(os.path.join(logFldr, f"exhibitor-exhibitors_{year}.xlsx"), index=False) # Writes to XLSX
+logging.info(f"Data scraping completed and saved to exhibitor-exhibitors_{year}.csv and exhibitor-exhibitors_{year}.xlsx.")
+print(f"Data scraping completed and saved to exhibitor-exhibitors_{year}.csv and exhibitor-exhibitors_{year}.xlsx.")
